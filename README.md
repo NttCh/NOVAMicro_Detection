@@ -22,7 +22,7 @@ It includes modular components for configuration, data loading, model building, 
 - Choose `run_mode`:
   - `"train"` → **Train a model**
     - If `reuse.enable=False`: trains from scratch using images in  
-      `data/train_bac` *(positive)* and `data/train_nonbac` *(negative)*
+      `dataset/train_bac` *(positive)* and `dataset/train_nonbac` *(negative)*
     - If `reuse.enable=True`: reuses the best or selected trial from an existing Optuna study (e.g., `optuna.db`) and retrains with those hyperparameters
   - `"tune"` → run Optuna hyperparameter search  
   - `"test"` → evaluate pretrained model(s) on folders in `test/test_data`
@@ -82,5 +82,6 @@ You mostly edit these fields:
   - Output options: `save_heatmap`, `save_overlay`, `save_original_overlay`, `panel`
   - Stabilizers: `tta`, `smooth`, `smooth_n`, `smooth_sigma`
   - `class_names`, `mask_scale_bar`, `mask_rect_wh`
+
 
 ---
