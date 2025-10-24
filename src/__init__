@@ -1,0 +1,2 @@
+# makes `src` a package; (optional) convenience re-exports
+from . import config

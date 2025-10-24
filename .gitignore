@@ -1,0 +1,43 @@
+# --- Python + ML project ignore ---
+__pycache__/
+*.py[cod]
+.DS_Store
+.vscode/
+.idea/
+
+# --- Virtual environments ---
+env/
+venv/
+.venv/
+
+# --- Large / generated outputs ---
+data/
+runs/
+outputs/
+checkpoints/
+logs/
+tmp/
+cache/
+wandb/
+mlruns/
+optuna/
+novamicro_project/
+novamicro_project_rck/
+plots_300dpi/
+*.pth
+*.pt
+*.csv
+*.xlsx
+*.npy
+*.npz
+*.pkl
+*.zip
+
+# --- Model / evaluation artifacts ---
+*.html
+*.png
+*.jpg
+*.tiff
+
+# --- Keep test folder ---
+!test/
