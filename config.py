@@ -12,7 +12,7 @@ def env_path(var, default_rel):
     return os.getenv(var, str((REPO_ROOT / default_rel).as_posix()))
 
 CFG_DICT = {
-    "run_mode": "test",     # "train" or "tune" or "test"
+    "run_mode": "tune",     # "train" or "tune" or "test"
     "use_cv": True,          # If True, use cross-validation
     "reuse": {
             "enable": False,
@@ -99,10 +99,10 @@ CFG_DICT = {
     },
 
     "data": {
-        "negative_dir": env_path("MICROCLF_NEG_DIR", "data/train_nonbac"),
-        "positive_dir": env_path("MICROCLF_POS_DIR", "data/train_bac"),
-        "detection_csv":  env_path("MICROCLF_CSV", "data/train_model.csv"),
-        "folder_path": env_path("MICROCLF_DATA_ROOT", "data"),
+        "negative_dir": env_path("MICROCLF_NEG_DIR", "dataset/train_nonbac"),
+        "positive_dir": env_path("MICROCLF_POS_DIR", "dataset/train_bac"),
+        "detection_csv":  env_path("MICROCLF_CSV", "dataset/train_model.csv"),
+        "folder_path": env_path("MICROCLF_DATA_ROOT", "dataset"),
         "num_workers": 0,
         "generate_csv": False,
         "batch_size": 8,

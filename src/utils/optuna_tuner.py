@@ -13,7 +13,7 @@ import optuna
 import pandas as pd
 from omegaconf import OmegaConf
 
-from src.config import cfg as global_cfg
+from config import cfg as global_cfg
 from .train import repeated_cross_validation, train_stage
 from .utils import load_obj, set_seed
 

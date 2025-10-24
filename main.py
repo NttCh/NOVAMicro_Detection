@@ -30,8 +30,8 @@ warnings.filterwarnings(
 )
 
 # -------- Project imports (match src/ layout) --------
-import src.config as config
-from src.config import cfg
+import config as config
+from config import cfg
 
 # data / transforms
 from src.utils.data import _build_valid_transform

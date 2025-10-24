@@ -16,7 +16,7 @@ from sklearn.metrics import classification_report, fbeta_score
 from sklearn.model_selection import train_test_split
 from torch.utils.data import DataLoader
 import glob
-import src.config as config
+import config as config
 from .data import PatchClassificationDataset, _build_valid_transform
 from .utils import (
     _ckpt_output_tag,

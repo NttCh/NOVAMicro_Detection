@@ -20,8 +20,8 @@ from pytorch_lightning.loggers.logger import Logger as _PLLoggerBase
 from sklearn.model_selection import StratifiedKFold, train_test_split
 from torch.utils.data import DataLoader
 
-import src.config as config
-from src.config import cfg
+import config as config
+from config import cfg
 from .callbacks import (
     MasterValidationMetricsCallback,
     OptunaCompositeReportingCallback,

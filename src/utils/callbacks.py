@@ -21,7 +21,7 @@ from sklearn.metrics import (
 )
 from torch import nn
 
-import src.config as config
+import config as config
 
 
 # ---------------- progress ----------------
