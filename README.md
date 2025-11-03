@@ -83,6 +83,8 @@ You mostly edit these fields:
   - Stabilizers: `tta`, `smooth`, `smooth_n`, `smooth_sigma`
   - `class_names`, `mask_scale_bar`, `mask_rect_wh`
 
+---
+
 ## Dataset Acknowledgment
 The test dataset used in this project is derived from the [DIBaS – Bacterial Colony Dataset](https://www.kaggle.com/datasets/samaarashidaarbi/dibas-bacterial-colony-dataset) by **Sam Aarbi** (2022), available on *Kaggle*.
 
@@ -90,5 +92,8 @@ The test dataset used in this project is derived from the [DIBaS – Bacterial C
 S. A. Aarbi, “DIBaS – Bacterial Colony Dataset,” *Kaggle*, 2022. [Online]. Available: https://www.kaggle.com/datasets/samaarashidaarbi/dibas-bacterial-colony-dataset. [Accessed: Nov. 3, 2025].
 
 This dataset was used solely for testing and evaluation purposes under the terms of the Kaggle license.
+
+---
+
 
 
