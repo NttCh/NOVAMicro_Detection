@@ -198,6 +198,7 @@ def train_stage(
     _maximize = {"val_f2", "val_f1", "val_recall", "val_precision", "val_acc", "val_auc"}
     monitor_mode = "max" if monitor_metric in _maximize else "min"
 
+    mc = None
     if enable_ckpt:
         mc = ModelCheckpoint(
             dirpath=save_dir,
@@ -208,17 +209,44 @@ def train_stage(
             filename=f"{stage_name}-" + "{epoch:02d}-{" + monitor_metric + ":.4f}",
         )
 
-    patience = (cfg.training.early_stopping.patience_hpo if trial is not None else cfg.training.early_stopping.patience_final)
+    # early stopping config
+    es_cfg = getattr(getattr(cfg, "training", {}), "early_stopping", None)
+    es_enabled = bool(getattr(es_cfg, "enabled", True)) if es_cfg is not None else True
+
     core_callbacks = [
         OverallProgressCallback(),
-        TrialFoldProgressCallback(trial_number=trial_number, total_trials=total_trials, fold_number=fold_number, total_folds=total_folds),
+        TrialFoldProgressCallback(
+            trial_number=trial_number,
+            total_trials=total_trials,
+            fold_number=fold_number,
+            total_folds=total_folds,
+        ),
         LocalTrainEvalCallback(train_eval_loader=train_eval_loader),
         CleanTQDMProgressBar(),
     ]
+
     if not suppress_metrics:
-        callbacks += [EarlyStopping(monitor=monitor_metric, patience=int(patience), mode=monitor_mode), *([mc] if enable_ckpt else []), *core_callbacks]
+        # Add EarlyStopping only if enabled in config
+        if es_enabled:
+            patience = (
+                cfg.training.early_stopping.patience_hpo
+                if trial is not None
+                else cfg.training.early_stopping.patience_final
+            )
+            callbacks.append(
+                EarlyStopping(
+                    monitor=monitor_metric,
+                    patience=int(patience),
+                    mode=monitor_mode,
+                )
+            )
+
+        if enable_ckpt and mc is not None:
+            callbacks.append(mc)
+
+        callbacks += core_callbacks
     else:
-        if enable_ckpt:
+        if enable_ckpt and mc is not None:
             callbacks.append(mc)
         callbacks += core_callbacks
 
