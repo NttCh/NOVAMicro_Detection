@@ -12,7 +12,7 @@ def env_path(var, default_rel):
     return os.getenv(var, str((REPO_ROOT / default_rel).as_posix()))
 
 CFG_DICT = {
-    "run_mode": "tune",     # "train" or "tune" or "test"
+    "run_mode": "test",     # "train" or "tune" or "test"
     "use_cv": True,          # If True, use cross-validation
     "reuse": {
             "enable": False,
